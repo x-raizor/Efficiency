@@ -10,9 +10,13 @@ It removes any layers except text from your current selection. Sometimes you wil
 # Random shift
 Shifts layers in selection in random direction. It’ll ask you for maximum shift size.
 
+![Random shift example](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/random_shift.gif)
+
 
 # Random size
 Gives to layers in selection random size based on Perlin noise. It’ll ask you for scale factor.
+
+![Random size example](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/random_size.gif)
 
 
 # Text Leading Up/Down and LineSpacing Up/Down
@@ -24,3 +28,6 @@ Leading-: command alt shift ctrl -
 Line Spacing+: command alt shift =
 Line Spacing-: command alt shift -
 
+
+# Credits
+* Perlin Noise by John Haggerty [Slime](http://www.slimeland.com)
