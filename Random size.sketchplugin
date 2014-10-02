@@ -1,0 +1,20 @@
+// Set object's widths randomly using Perlin noise (cmd alt shift r)
+#import 'js/vector.js'
+#import 'js/perlinnoise.js'
+
+var scaleFactor = [doc askForUserInput:"Scale factor [1..100]" initialValue:"5"]
+
+P = new PerlinNoise(Math.random(), 11);
+
+for (var i=0; i < [selection count]; i++){
+  var layer = selection[i],
+      _x = Math.abs(layer.frame().x()),
+      _y = Math.abs(layer.frame().y()),
+      width = layer.frame().width(),
+      fNoise = P.evaluate({x:_x, y:_y, z:1}) * scaleFactor;
+  
+  layer.frame().setConstrainProportions(true);
+  layer.frame().setWidth(fNoise);
+  
+
+}

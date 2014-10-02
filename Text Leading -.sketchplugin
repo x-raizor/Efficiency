@@ -1,0 +1,12 @@
+// Leading Down (cmd alt shift ctrl -)
+#import 'js/utilities.js'
+
+var newSelection = getTextLayers();
+var itemsNumber = newSelection.length;
+
+for (var i = 0; i < itemsNumber; i++) {
+    var layer = newSelection[i];
+    var lead = layer.leading();
+    layer.setLeading(lead - 1);
+    layer.adjustFrameToFit();
+}

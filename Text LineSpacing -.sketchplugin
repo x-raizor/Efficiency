@@ -1,0 +1,12 @@
+// Leading Down (cmd alt shift -)
+#import 'js/utilities.js'
+
+var newSelection = getTextLayers();
+var itemsNumber = newSelection.length;
+
+for (var i = 0; i < itemsNumber; i++) {
+    var layer = newSelection[i];
+    var ls = layer.lineSpacing();
+    layer.lineSpacing =  ls - 1;
+    layer.adjustFrameToFit();
+}
