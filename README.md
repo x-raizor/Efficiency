@@ -15,6 +15,12 @@ Line Spacing+: command alt shift =
 Line Spacing-: command alt shift -
 
 
+# Text tracking (symbol spacing) Up/Down
+## Keyboard shortcuts
+Symbol spacing -: alt ←
+Symbol spacing +: alt →
+
+
 # Keep only text layers in selection
 It removes any layers except text from your current selection. Sometimes you will want to choose all text layers in the document, page or artboard. So select all layers of scope you want and apply this plugin.
 
