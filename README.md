@@ -1,22 +1,33 @@
+
 Efficiency
 ==========
 Here is a plugins suite for efficient work in Sketch.App. The purpose is to work faster and less apish.
 
+![](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/efficiency-logo.png)
 
-# Text Leading Up/Down and LineSpacing Up/Down
-Let you manipulate with text block leading and line spacing via keyboard. With native hotkeys for font size (cmd alt =/-) and text block size changing (cmd shift ←/→) it transforms Sketch into typographics tool with immediate connection.
+
+# Bitmap To Pattern Fill
+by Aby Nimbalkar
+Convert selected images into rectangles with images as pattern fill.
+
 
 ![Text manipulations](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/text_manipulation.gif)
+
+
+# Text leading, line spacing and tracking
+Let you manipulate with text block leading, line spacing and tracking via keyboard. With native hotkeys for font size (cmd alt =/-) and text block size changing (cmd shift ←/→) it transforms Sketch into typographics tool with immediate connection.
 
 ## Keyboard shortcuts
 * Leading+: command alt shift ctrl =
 * Leading-: command alt shift ctrl -
 * Line Spacing+: command alt shift =
 * Line Spacing-: command alt shift -
-
+* Tracking-: Alt ← 
+* Tracking+: Alt →
 
 # Text tracking
-Press Alt ← or Alt → to decrease or increase symbols spacing (tracking).
+Press Alt ← or Alt → to decrease or increase symbols spacing (tracking). It works only then text frame selected not in edit mode.
+
 
 # Keep only text layers in selection
 It removes any layers except text from your current selection. Sometimes you will want to choose all text layers in the document, page or artboard. So select all layers of scope you want and apply this plugin.
@@ -32,6 +43,11 @@ Shifts layers in selection in random direction. It’ll ask you for maximum shif
 Gives to layers in selection random size based on Perlin noise. It’ll ask you for scale factor.
 
 ![Random size example](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/random_size.gif)
+
+
+# Authors
+* Aby Nimbalkar
+* Andrew Shapiro
 
 
 # Credits

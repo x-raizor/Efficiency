@@ -1,0 +1,74 @@
+// Bitmap To Pattern Fill (ctrl shift y)
+
+function run() {
+	if ([selection count] == 0) {
+		showDialog("Select an image layer")
+		return
+	}
+	
+	var loop = [selection objectEnumerator],
+		notBitmapCount = 0,
+		newLayers = [NSMutableArray new],
+		rawImage, parent, newLayer, rect;
+		
+	while (layer = [loop nextObject]) {
+		if ([layer class] === MSBitmapLayer) {
+			rawImage = [[layer image] image]
+			parent = [layer parentGroup]
+			newLayer = [[parent addLayerOfType: 'rectangle'] embedInShapeGroup]
+			[newLayer setName:[layer name]]
+			
+			rect = [layer absoluteRect]
+			[[newLayer absoluteRect] setX: [rect x]];
+		    [[newLayer absoluteRect] setY: [rect y]];
+			[[newLayer absoluteRect] setWidth: [rect width]];
+		    [[newLayer absoluteRect] setHeight: [rect height]];
+			
+			setBitmapFill(newLayer, rawImage)
+			[parent removeLayer: layer]
+			[newLayers addObject:newLayer]
+		} else {
+			notBitmapCount++
+		}
+	}
+	
+	[[doc currentPage] deselectAllLayers]
+	loop = [newLayers objectEnumerator]
+	while (layer = [loop nextObject]) {
+		[layer select:true byExpandingSelection:true]
+	}
+	
+	if (notBitmapCount == 1) {
+		showDialog(notBitmapCount+" selected layer is not an image layer")
+	} else if (notBitmapCount > 1) {
+		showDialog(notBitmapCount+" selected layers are not image layers")
+	}
+}
+
+function showDialog (message, OKHandler) {
+  var alert = [COSAlertWindow new];
+  [alert setMessageText: "Bitmap to Pattern"]
+  [alert setInformativeText: message]
+  var responseCode = [alert runModal];	
+  if(OKHandler != nil && responseCode == 0) OKHandler()
+}
+
+function setBitmapFill(layer, imageData) {
+	if( [layer class] === MSShapeGroup ) {
+		var fills = [[layer style] fills];
+			// disable existing fills
+			var loop = [[fills array] objectEnumerator]
+			while (existingFill = [loop nextObject]) {
+				[existingFill setIsEnabled:false]
+			}
+			[fills addNewStylePart];
+			
+		var bmpFill = [fills lastObject],
+			fillCollection = [[bmpFill documentData] images]
+			[bmpFill setFillType:4]
+			[bmpFill setPatternImage:imageData collection:fillCollection]
+			[bmpFill setPatternFillType:1]
+	}
+}
+
+run()
