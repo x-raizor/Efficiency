@@ -8,13 +8,12 @@ Here is a plugins suite for efficient work in Sketch.App. The purpose is to work
 
 # Bitmap To Pattern Fill
 by Aby Nimbalkar
+![Text manipulations](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/bitmap-to-fill.gif)
 Convert selected images into rectangles with images as pattern fill.
 
 
-![Text manipulations](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/text_manipulation.gif)
-
-
 # Text leading, line spacing and tracking
+![Text manipulations](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/text_manipulation.gif)
 Let you manipulate with text block leading, line spacing and tracking via keyboard. With native hotkeys for font size (cmd alt =/-) and text block size changing (cmd shift ←/→) it transforms Sketch into typographics tool with immediate connection.
 
 ## Keyboard shortcuts
