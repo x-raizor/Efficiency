@@ -7,10 +7,9 @@ Here is a plugins suite for efficient work in Sketch.App. The purpose is to work
 
 
 # Bitmap To Pattern Fill
-by Aby Nimbalkar
-![Text manipulations](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/bitmap-to-fill.gif)
+![Bitmap to pattern fill](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/bitmap-to-fill.gif)
 Convert selected images into rectangles with images as pattern fill.
-
+Plugin by Aby Nimbalkar
 
 # Text leading, line spacing and tracking
 ![Text manipulations](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/text_manipulation.gif)
