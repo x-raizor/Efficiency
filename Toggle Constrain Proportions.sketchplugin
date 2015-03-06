@@ -1,0 +1,7 @@
+// Toggle 'Constrain proportions' property (cmd shift a)
+
+var loop = [selection objectEnumerator]
+
+while (layer = [loop nextObject]) {
+	layer.constrainProportions = !layer.constrainProportions();
+}
