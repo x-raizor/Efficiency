@@ -1,5 +1,5 @@
 {
     "name": "Efficiency",
-    "description": "Sketch app plugins for text manipulation and add ranodmness to items size and positions",
-    "tags": ["typographics", "random", "generator", "scatter", "selection", "symbol spacing", "line spacing", "leading"]
+    "description": "Sketch app plugins for efficient text manipulation and add ranodmness to items size and positions",
+    "tags": ["typographics", "random", "generator", "scatter", "selection", "symbol spacing", "line spacing", "leading", "pattern fill", "constrain proportions"]
 }
