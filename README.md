@@ -15,13 +15,13 @@ Plugin by Aby Nimbalkar
 # Text leading, line spacing and tracking
 ![Text manipulations](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/text_manipulation.gif)
 
-Let you manipulate with text block leading, line spacing and tracking via keyboard. With native hotkeys for font size (cmd alt =/-) and text block size changing (cmd shift ←/→) it transforms Sketch into typographics tool with immediate connection.
+Let you manipulate with text block leading (paragraph indent), line spacing and tracking via keyboard. With native hotkeys for font size (cmd alt =/-) and text block size changing (cmd shift ←/→) it transforms Sketch into typographics tool with immediate connection.
 
 ## Keyboard shortcuts
-* Leading+: command alt shift ctrl =
-* Leading-: command alt shift ctrl -
-* Line Spacing+: command alt shift =
-* Line Spacing-: command alt shift -
+* Line Spacing+: Cmd Alt Shift =
+* Line Spacing-: Cmd Alt Shift -
+* Leading+: Cmd Alt Shift Ctrl =
+* Leading-: Cmd Alt Shift Ctrl -
 * Tracking-: Alt ← 
 * Tracking+: Alt →
 
@@ -36,7 +36,7 @@ It removes any layers except text from your current selection. Sometimes you wil
 # Random shift
 Shifts layers in selection in random direction. It’ll ask you for maximum shift size.
 
-Shortcut: Cmd + Alt + R
+Shortcut: Cmd Alt R
 
 ![Random shift example](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/random_shift.gif)
 
@@ -44,7 +44,7 @@ Shortcut: Cmd + Alt + R
 # Random size
 Gives to layers in selection random size based on Perlin noise. It’ll ask you for scale factor.
 
-Shortcut: Cmd + Alt + Shift + R
+Shortcut: Cmd Alt Shift R
 
 ![Random size example](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/random_size.gif)
 
@@ -52,7 +52,7 @@ Shortcut: Cmd + Alt + Shift + R
 # Toggle ‘Constrain Proportions’
 Toggle state of ‘Constrain Proportions’ layer property. 
 
-Shortcut: Cmd + Shift + A (mnemonically: Aspect ratio)
+Shortcut: Cmd Shift A (mnemonically: Aspect ratio)
 
 ![Toggle Constrain Proportions](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/toggle-constrain-proportions.gif)
 
