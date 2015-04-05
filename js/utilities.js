@@ -1,55 +1,5 @@
 /**
- * Helpers 
- */
-
-function selectLayer(layer) {
-    [layer select:true byExpandingSelection:true]
-}
-
-function deselectLayer(layer) {
-    [layer select:false byExpandingSelection:true]
-}
-    
-
-
-/* gather all choldren for banch of 'layers' into array 'sel' */
-function collectChildren(layers, sel) {
-  for (var x = 0; x < [layers count]; x++){
-    var childLayer = layers.array()[x];
-    if (isText(childLayer)) sel.push(childLayer); // process only text layers
-  }
-}
-
-/* select all children of the group */
-function selectChildren(layers) {
-  for (var x=0; x < [layers count]; x++){
-    var childLayer = layers.array()[x];
-    [childLayer select:true byExpandingSelection:true]
-  }
-}
-
-/* untested, doesn't work properly at the moment */
-function forEach(items, action) {
-    for (var x=0; x < [items count]; x++) { 
-        action(items[x]);
-    }
-}
-
-
-/**
- * Generators
- */
-
-function randInt(from, to) {
-/** 
- * Return random value between 'from' and 'to'
- */
-  return from + Math.random()*(to-from);
-}
-
-
-/**
- * TESTER functions 
+ * Checkers
  */
 
 function isText(layer) {
@@ -61,19 +11,102 @@ function isGroup(layer) {
 }
 
 
-function getTextLayers() {
-	var newSelection = []
+/**
+ * Helpers 
+ */
 
-	// look through selection to lookup inside groups and gather layers
-	var loop = [selection objectEnumerator]
-	while (layer = [loop nextObject]) {
-	  if (isGroup(layer)) {
-	      collectChildren([layer layers], newSelection);
-	  } else {
-	      if (isText(layer)) newSelection.push(layer);  // process only text layers
-	  }
-	}
-	return newSelection;
+function selectLayer(layer) {
+    [layer select:true byExpandingSelection:true]
+}
+
+
+function deselectLayer(layer) {
+    [layer select:false byExpandingSelection:true]
+}
+    
+
+/**
+ * Gather all children for banch of 'layers' into array 'sel' 
+ */
+function collectChildren(layers, sel) {
+  for (var x = 0; x < [layers count]; x++){
+    var childLayer = layers.array()[x];
+    if (isText(childLayer)) sel.push(childLayer); // process only text layers
+  }
+}
+
+
+/**
+ * Select all children of the group (keeping group selected!)
+ */
+function selectChildren(layers) {
+  for (var x=0; x < [layers count]; x++){
+    var childLayer = layers.array()[x];
+    [childLayer select:true byExpandingSelection:true]
+  }
+}
+
+
+/**
+ * Return array of selected layers keeping only text ones
+ */
+function getTextLayers() {
+    var newSelection = []
+    
+    // look through selection to lookup inside groups and gather layers
+    var loop = [selection objectEnumerator]
+    while (layer = [loop nextObject]) {
+      if (isGroup(layer)) {
+          collectChildren([layer layers], newSelection);
+      } else {
+          if (isText(layer)) newSelection.push(layer);  // process only text layers
+      }
+    }
+    return newSelection;
+}
+
+/* DOESN'T WORK properly at the moment */
+function forEach(items, action) {
+    for (var x=0; x < [items count]; x++) { 
+        action(items[x]);
+    }
+}
+
+
+/**
+ * Generators
+ */
+
+/** 
+ * Return random value between 'from' and 'to'
+ */
+function randInt(from, to) {
+  return from + Math.random()*(to-from);
+}
+
+/**
+ * Returns a random number between min (inclusive) and max (exclusive)
+ */
+function getRandom(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
+/**
+ * Returns a random integer between min (inclusive) and max (inclusive)
+ * But Math.round() has a non-uniform distribution!
+ */
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+/**
+* HTTP getters
+*/
+// Sychronous request to url by @tylergaw on github
+function getJSON (url) {
+  var request = NSURLRequest.requestWithURL(NSURL.URLWithString(url));
+  var response = NSURLConnection.sendSynchronousRequest_returningResponse_error(request, null, null);
 }
 
 
@@ -97,13 +130,10 @@ var clipboard = {
     set : function( text )
     {
         if( typeof text === 'undefined' ) return null;
- 
         if( !this.pasteBoard )
             this.init();
- 
         this.pasteBoard.declareTypes_owner( [ NSPasteboardTypeString ], null );
         this.pasteBoard.setString_forType( text, NSPasteboardTypeString );
- 
         return true;
     },
     // get text from the clipbaoard
@@ -111,9 +141,52 @@ var clipboard = {
     {
         if( !this.pasteBoard )
             this.init();
- 
         var text = this.pasteBoard.stringForType( NSPasteboardTypeString );
-        
         return text.toString();
     }
+};
+
+
+/* 
+ * Content Generator Utils
+ */
+var tools = {
+  versionComponents : function() {
+    var info = [[NSBundle mainBundle] infoDictionary];
+    var items = [[(info["CFBundleShortVersionString"]) componentsSeparatedByString:"."] mutableCopy];
+
+    while([items count] < 3)
+      [items addObject:"0"];
+
+    return items;
+  },
+  majorVersion : function() {
+    var items = tools.versionComponents();
+
+    return items[0];
+  },
+  minorVersion : function() {
+    var items = tools.versionComponents();
+
+    return items[1];
+  },
+  convertToString : function(objectString){
+    var i = 0;
+    normalString = "";
+    while(objectString[i] !== null) normalString += objectString[i];
+    return normalString;
+  },
+
+  saveFile : function(path,data){   
+    var someContent = NSString.stringWithString_(data)
+    var path = path
+    someContent.dataUsingEncoding_(NSUTF8StringEncoding).writeToFile_atomically_(path, true)
+  },
+  pluginPath : function(){
+    if(tools.majorVersion() == 3){
+      var pluginFolder = scriptPath.match(/Plugins\/([\w -])*/)[0] + "/";
+      var sketchPluginsPath = scriptPath.replace(/Plugins([\w \/ -])*.sketchplugin$/, "");
+      return pluginFolder;
+    }   
+  }
 };
