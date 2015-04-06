@@ -65,12 +65,6 @@ function getTextLayers() {
     return newSelection;
 }
 
-/* DOESN'T WORK properly at the moment */
-function forEach(items, action) {
-    for (var x=0; x < [items count]; x++) { 
-        action(items[x]);
-    }
-}
 
 
 /**
@@ -84,12 +78,14 @@ function randInt(from, to) {
   return from + Math.random()*(to-from);
 }
 
+
 /**
  * Returns a random number between min (inclusive) and max (exclusive)
  */
 function getRandom(min, max) {
     return Math.random() * (max - min) + min;
 }
+
 
 /**
  * Returns a random integer between min (inclusive) and max (inclusive)
@@ -101,13 +97,41 @@ function getRandomInt(min, max) {
 
 
 /**
-* HTTP getters
+ * Return random string with length equals to charNumber
+ */
+function randomString(charNumber) {
+    if (charNumber == undefined) charNumber = 140;
+    var rstr = "";
+    for (i = 0; i < charNumber; i++) {
+        var cChar = String.fromCharCode(getRandomInt(48, 122));
+        rstr += cChar;
+    }
+    return rstr;
+}
+
+
+
+/** HTTP getters */
+
+/**
+* Load response from url by SynchronousRequest
 */
-// Sychronous request to url by @tylergaw on github
+function get(url) {
+    var request = NSURLRequest.requestWithURL(NSURL.URLWithString(url));
+    var response = NSURLConnection.sendSynchronousRequest_returningResponse_error(request, null, null);
+    return response;
+}
+
+/**
+ * Sychronous request to url by @tylergaw on github
+ */
 function getJSON (url) {
   var request = NSURLRequest.requestWithURL(NSURL.URLWithString(url));
   var response = NSURLConnection.sendSynchronousRequest_returningResponse_error(request, null, null);
+  return JSON.parse(NSString.alloc().initWithData_encoding(response, NSUTF8StringEncoding));
 }
+
+
 
 
 /**

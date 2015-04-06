@@ -12,6 +12,18 @@ Convert selected images into rectangles with images as pattern fill.
 
 Plugin by Aby Nimbalkar
 
+
+# Muravjev’s Typograph (alfa)
+![Bitmap to pattern fill](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/typograph.gif)
+Typographics enhancer with set of rules for Russian typographics. Powered by [mdash.ru](http://mdash.ru) typograph web service which is lovely made by Evgeny Muravjev and Alexander Drutsa.
+
+**Set options**
+OptAlign.all = off
+Text.breakline = off
+Text.paragraphs = off
+Etc.unicode_convert = on
+ 
+
 # Text leading, line spacing and tracking
 ![Text manipulations](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/text_manipulation.gif)
 
@@ -65,3 +77,4 @@ Shortcut: Cmd Shift A (mnemonically: Aspect ratio)
 
 # Credits
 * Perlin Noise by John Haggerty [Slime](http://www.slimeland.com)
+* [Mdash.ru](http://mdash.ru) typograph web service by Evgeny Muravjev and Alexander Drutsa

@@ -1,0 +1,86 @@
+// Muravjev's typograph (cmd ctrl shift t)
+#import 'js/utilities.js'
+
+/**
+ * Typographics enhancer with Russian typographics set of rules.
+ * Powered by mdash.ru by Evgeny Muravjev and Alexander Drutsa
+ * Plugin's written by Andrei Shapiro, andrew@ashapiro.ru
+ */
+
+
+var loop = [selection objectEnumerator]
+
+while (layer = [loop nextObject]) {
+    if (!isText(layer)) continue;
+    var options = "OptAlign.all=off&" +
+        "Text.breakline=off&" +
+        "Text.paragraphs=off&" +
+        // "Nobr.super_nbsp=off&" +
+        // "Nobr.nbsp_in_the_end=off&" +
+        // "Nobr.phone_builder=off&" +
+        // "Nobr.ip_address=off&" +
+        // "Nobr.spaces_nobr_in_surname_abbr=off&" +
+        // "Nobr.nbsp_celcius=off&" +
+        // "Nobr.hyphen_nowrap_in_small_words=off&" +
+        // "Nobr.hyphen_nowrap=off&" +
+        //"Nobr.nowrap=off&" +
+        "Etc.unicode_convert=on&";
+    
+    var encodedString = encodeURIComponent([layer stringValue]);  // escape string 
+
+    var url = "http://mdash.ru/api.v1.php";
+    var postString = [NSString stringWithUTF8String: options + "text=" + encodedString];
+    var request = NSMutableURLRequest.requestWithURL(NSURL.URLWithString(url));
+    [request setHTTPMethod: "POST"];
+    //[request addValue: postString.length forHTTPHeaderField:@"Content-Length"];
+    //[request setValue:"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
+    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+
+    var response = NSURLConnection.sendSynchronousRequest_returningResponse_error(request, null, null);
+    var typo = JSON.parse(NSString.alloc().initWithData_encoding(response, NSUTF8StringEncoding));
+
+    /**
+     * GET request, (outdated)
+     * use mdash.ru webservice for typograph
+    */
+    //requestString = "http://mdash.ru/api.v1.php?" + options + "text=" + encodedString;
+    //var typo = getJSON(requestString);
+
+
+    layer.setStringValue( typo.result );  // inject typographed text
+
+    // rerender text layer
+    var width = layer.absoluteRect().width();
+    [layer setTextBehaviour: 0]  // Make it flexible: 1 — BCTextBehaviourFixedWidth
+    [layer setTextBehaviour: 1]  // Make it fixed back: 0 — BCTextBehaviourFlexibleWidth
+    layer.absoluteRect().width = width;
+    [layer adjustFrameToFit]
+
+}
+
+
+    /*
+    var post = [NSString stringWithFormat: "text=Что%20бы%20я%20ни%20делал"];
+    var postData = [post dataUsingEncoding:NSUTF8StringEncoding];
+    //var postLength = [NSString stringWithFormat:@"%ld", (unsigned long[postData length]];
+
+//    log([postData stringValue]);
+
+    var request = [NSMutableURLRequest new];
+    [request setURL:[NSURL URLWithString: "http://mdash.ru/api.v1.php"]];
+    [request setHTTPMethod: "POST"];
+    [request setValue:30 forHTTPHeaderField: "Content-Length"];  // postLength
+    [request setValue: "application/x-www-form-urlencoded" forHTTPHeaderField:"Content-Type"];
+    [request setHTTPBody:postData];
+  
+    log(request);
+
+    var theConnection = [[NSURLConnection alloc] initWithRequest:request];
+
+    if(theConnection) {
+        webData = [NSMutableData data];
+    }
+    log(webData);
+
+    */
