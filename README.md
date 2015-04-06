@@ -15,14 +15,17 @@ Plugin by Aby Nimbalkar
 
 # Muravjev’s Typograph (alfa)
 ![Bitmap to pattern fill](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/typograph.gif)
+
 Typographics enhancer with set of rules for Russian typographics. Powered by [mdash.ru](http://mdash.ru) typograph web service which is lovely made by Evgeny Muravjev and Alexander Drutsa.
 
 **Set options**
-OptAlign.all = off
-Text.breakline = off
-Text.paragraphs = off
-Etc.unicode_convert = on
+* OptAlign.all = off
+* Text.breakline = off
+* Text.paragraphs = off
+* Etc.unicode_convert = on
  
+**Shortcut:** Cmd Ctrl Shift T
+
 
 # Text leading, line spacing and tracking
 ![Text manipulations](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/text_manipulation.gif)
@@ -48,7 +51,7 @@ It removes any layers except text from your current selection. Sometimes you wil
 # Random shift
 Shifts layers in selection in random direction. It’ll ask you for maximum shift size.
 
-Shortcut: Cmd Alt R
+**Shortcut:** Cmd Alt R
 
 ![Random shift example](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/random_shift.gif)
 
@@ -56,7 +59,7 @@ Shortcut: Cmd Alt R
 # Random size
 Gives to layers in selection random size based on Perlin noise. It’ll ask you for scale factor.
 
-Shortcut: Cmd Alt Shift R
+**Shortcut:** Cmd Alt Shift R
 
 ![Random size example](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/random_size.gif)
 
@@ -64,7 +67,7 @@ Shortcut: Cmd Alt Shift R
 # Toggle ‘Constrain Proportions’
 Toggle state of ‘Constrain Proportions’ layer property. 
 
-Shortcut: Cmd Shift A (mnemonically: Aspect ratio)
+**Shortcut**: Cmd Shift A (mnemonically: Aspect ratio)
 
 ![Toggle Constrain Proportions](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/toggle-constrain-proportions.gif)
 
