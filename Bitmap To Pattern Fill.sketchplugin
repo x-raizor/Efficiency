@@ -9,13 +9,14 @@ function run() {
 	var loop = [selection objectEnumerator],
 		notBitmapCount = 0,
 		newLayers = [NSMutableArray new],
+		sketchVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"],
 		rawImage, parent, newLayer, rect;
 		
 	while (layer = [loop nextObject]) {
 		if ([layer class] === MSBitmapLayer) {
 			rawImage = [[layer image] image]
 			parent = [layer parentGroup]
-			newLayer = [[parent addLayerOfType: 'rectangle'] embedInShapeGroup]
+			newLayer = (sketchVersion >= 3.3) ? [parent addLayerOfType: 'rectangle'] : [[parent addLayerOfType: 'rectangle'] embedInShapeGroup]
 			[newLayer setName:[layer name]]
 			
 			rect = [layer absoluteRect]
