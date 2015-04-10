@@ -8,6 +8,18 @@
  */
 
 
+function processNobr(text) {
+    /**
+     * Returns text with not breaking
+     */
+    var nbsp = String.fromCharCode(160);
+    //nbsp = '*';
+    newText = text.replace(/<nobr>(.*?)( ?)(.*?)<\/nobr>/g, "$1"+nbsp+"$3");
+    //log(newText);
+    return newText;
+}
+
+
 var loop = [selection objectEnumerator]
 
 while (layer = [loop nextObject]) {
@@ -23,32 +35,16 @@ while (layer = [loop nextObject]) {
         // "Nobr.nbsp_celcius=off&" +
         // "Nobr.hyphen_nowrap_in_small_words=off&" +
         // "Nobr.hyphen_nowrap=off&" +
-        //"Nobr.nowrap=off&" +
+        // "Nobr.nowrap=off&" +
         "Etc.unicode_convert=on&";
-    
-    var encodedString = encodeURIComponent([layer stringValue]);  // escape string 
 
-    var url = "http://mdash.ru/api.v1.php";
-    var postString = [NSString stringWithUTF8String: options + "text=" + encodedString];
-    var request = NSMutableURLRequest.requestWithURL(NSURL.URLWithString(url));
-    [request setHTTPMethod: "POST"];
-    //[request addValue: postString.length forHTTPHeaderField:@"Content-Length"];
-    //[request setValue:"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
-    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-    
-
-    var response = NSURLConnection.sendSynchronousRequest_returningResponse_error(request, null, null);
-    var typo = JSON.parse(NSString.alloc().initWithData_encoding(response, NSUTF8StringEncoding));
-
-    /**
-     * GET request, (outdated)
-     * use mdash.ru webservice for typograph
-    */
-    //requestString = "http://mdash.ru/api.v1.php?" + options + "text=" + encodedString;
-    //var typo = getJSON(requestString);
-
+    var url = "http://mdash.ru/api.v1.php",
+        body = options + "text=" + encodeURIComponent([layer stringValue]),
+        typo = getJSON(url, 'POST', body);
 
     layer.setStringValue( typo.result );  // inject typographed text
+
+    //processNobr(typo.result);
 
     // rerender text layer
     var width = layer.absoluteRect().width();
@@ -56,31 +52,5 @@ while (layer = [loop nextObject]) {
     [layer setTextBehaviour: 1]  // Make it fixed back: 0 — BCTextBehaviourFlexibleWidth
     layer.absoluteRect().width = width;
     [layer adjustFrameToFit]
-
 }
 
-
-    /*
-    var post = [NSString stringWithFormat: "text=Что%20бы%20я%20ни%20делал"];
-    var postData = [post dataUsingEncoding:NSUTF8StringEncoding];
-    //var postLength = [NSString stringWithFormat:@"%ld", (unsigned long[postData length]];
-
-//    log([postData stringValue]);
-
-    var request = [NSMutableURLRequest new];
-    [request setURL:[NSURL URLWithString: "http://mdash.ru/api.v1.php"]];
-    [request setHTTPMethod: "POST"];
-    [request setValue:30 forHTTPHeaderField: "Content-Length"];  // postLength
-    [request setValue: "application/x-www-form-urlencoded" forHTTPHeaderField:"Content-Type"];
-    [request setHTTPBody:postData];
-  
-    log(request);
-
-    var theConnection = [[NSURLConnection alloc] initWithRequest:request];
-
-    if(theConnection) {
-        webData = [NSMutableData data];
-    }
-    log(webData);
-
-    */

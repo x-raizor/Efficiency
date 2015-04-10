@@ -123,10 +123,23 @@ function get(url) {
 }
 
 /**
- * Sychronous request to url by @tylergaw on github
+ *  Sychronous request with GET of POST method
+ *  with contribution of @tylergaw on github
  */
-function getJSON (url) {
-  var request = NSURLRequest.requestWithURL(NSURL.URLWithString(url));
+function getJSON (url, method, body) {
+
+  if (method == undefined || method == 'GET' || body == undefined) {
+    // GET request
+    var request = NSURLRequest.requestWithURL(NSURL.URLWithString(url));
+  } 
+  else { // POST request
+
+    var postString = [NSString stringWithUTF8String: body];
+    var request = NSMutableURLRequest.requestWithURL(NSURL.URLWithString(url));
+    [request setHTTPMethod: "POST"];
+    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];    
+  }
+
   var response = NSURLConnection.sendSynchronousRequest_returningResponse_error(request, null, null);
   return JSON.parse(NSString.alloc().initWithData_encoding(response, NSUTF8StringEncoding));
 }
