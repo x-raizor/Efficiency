@@ -1,15 +1,24 @@
 // Bitmap To Pattern Fill (ctrl shift y)
 
+function versionToNumber(versionString) {
+	var number = 0;
+	versionString.split(".").forEach( function(value, id) {
+		number += value / Math.pow(10, Math.max(id, id + value.length - 1));
+	});
+	return number;
+}
+
+
 function run() {
 	if ([selection count] == 0) {
 		showDialog("Select an image layer")
 		return
 	}
-	
+
 	var loop = [selection objectEnumerator],
 		notBitmapCount = 0,
 		newLayers = [NSMutableArray new],
-		sketchVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"],
+		sketchVersion = versionToNumber( [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"] ),
 		rawImage, parent, newLayer, rect;
 		
 	while (layer = [loop nextObject]) {
