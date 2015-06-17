@@ -10,3 +10,5 @@ for (var i = 0; i < itemsNumber; i++) {
     layer.setLeading(lead - 1);
     layer.adjustFrameToFit();
 }
+
+[doc reloadInspector]

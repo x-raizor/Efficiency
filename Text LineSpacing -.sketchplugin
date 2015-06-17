@@ -10,3 +10,5 @@ for (var i = 0; i < itemsNumber; i++) {
     layer.lineSpacing =  ls - 1;
     layer.adjustFrameToFit();
 }
+
+[doc reloadInspector]
