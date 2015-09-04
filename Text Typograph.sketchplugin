@@ -15,6 +15,7 @@ function processNobr(text) {
     var nbsp = String.fromCharCode(160);
     //nbsp = '*';
     newText = text.replace(/<nobr>(.*?)( ?)(.*?)<\/nobr>/g, "$1"+nbsp+"$3");
+    // nice approach: str.split(search).join(replacement)
     //log(newText);
     return newText;
 }

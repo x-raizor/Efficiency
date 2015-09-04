@@ -11,6 +11,37 @@ function isGroup(layer) {
 }
 
 
+function isTextEditingInProgress() {
+    for(var i=0; i<selection.count(); i++) {
+        var layer = selection.objectAtIndex(i);
+        if(layer.className() == "MSTextLayer") {
+            if(layer.isEditingText()) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+
+function simulateKeyStroke(keyCode,modFlags) {
+  // simulateKeyStroke(0x35,0); escape
+  // simulateKeyStroke(0x24,0); ?
+    var event = [NSEvent keyEventWithType:NSKeyDown
+    location:NSMakePoint(0,0)
+    modifierFlags:modFlags
+    timestamp:[NSDate timeIntervalSinceReferenceDate]
+    windowNumber:0
+    context:[NSGraphicsContext currentContext]
+    characters:""
+    charactersIgnoringModifiers:""
+    isARepeat:false
+    keyCode:keyCode];
+
+    [NSApp postEvent:event atStart:true];
+}
+
+
 /**
  * Helpers 
  */
