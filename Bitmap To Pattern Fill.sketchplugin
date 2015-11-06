@@ -23,7 +23,7 @@ function run() {
 		
 	while (layer = [loop nextObject]) {
 		if ([layer class] === MSBitmapLayer) {
-			rawImage = [[layer image] image]
+			rawImage = (sketchVersion >= 3.4) ? [layer NSImage] : [[layer image] image]
 			parent = [layer parentGroup]
 			newLayer = (sketchVersion >= 3.3) ? [parent addLayerOfType: 'rectangle'] : [[parent addLayerOfType: 'rectangle'] embedInShapeGroup]
 			[newLayer setName:[layer name]]
