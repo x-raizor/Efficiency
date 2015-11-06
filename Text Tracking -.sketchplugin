@@ -1,8 +1,8 @@
 // Decrease Tracking for text layer or Duplicate and Nudge Left (alt ←)
-#import 'js/utilities.js'
+@import 'js/utilities.js'
 
 (function() {
-  for(var i=0; i < [selection length]; i++){
+  for(var i=0; i < [selection count]; i++){
     if (isText(selection[i])) { // tracking part
       var layer = selection[i];
       var tracking = layer.characterSpacing();

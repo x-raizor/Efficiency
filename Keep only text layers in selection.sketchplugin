@@ -1,5 +1,5 @@
 // Keep only text layers in selection
-#import 'js/utilities.js'
+@import 'js/utilities.js'
 
 function selectTextChildren(layers) {
   for (var x=0; x < [layers count]; x++){

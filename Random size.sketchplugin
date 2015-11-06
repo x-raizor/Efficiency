@@ -1,6 +1,6 @@
 // Set object's widths randomly using Perlin noise (cmd alt shift r)
-#import 'js/vector.js'
-#import 'js/perlinnoise.js'
+@import 'js/vector.js'
+@import 'js/perlinnoise.js'
 
 var scaleFactor = [doc askForUserInput:"Scale factor [1..100]" initialValue:"5"]
 

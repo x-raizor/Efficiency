@@ -1,5 +1,5 @@
 // Muravjev's typograph (cmd ctrl shift t)
-#import 'js/utilities.js'
+@import 'js/utilities.js'
 
 /**
  * Typographics enhancer with Russian typographics set of rules.

@@ -1,5 +1,5 @@
 // Move layers slightly in random direction (cmd alt r)
-#import 'js/utilities.js'
+@import 'js/utilities.js'
 
 
 var MAX_SHIFT = [doc askForUserInput:"Мaximum shift for objects?" initialValue:""]

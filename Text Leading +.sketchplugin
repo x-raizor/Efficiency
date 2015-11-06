@@ -1,5 +1,5 @@
 // Leading Up (cmd alt shift ctrl =)
-#import 'js/utilities.js'
+@import 'js/utilities.js'
 
 var newSelection = getTextLayers();
 var itemsNumber = newSelection.length;
