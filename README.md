@@ -10,7 +10,7 @@ Here is a plugins suite for efficient work in Sketch.App. The purpose is to work
 ![Bitmap to pattern fill](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/bitmap-to-fill.gif)
 Convert selected images into rectangles with images as pattern fill.
 
-Plugin by Aby Nimbalkar
+Plugin by [Aby Nimbalkar](https://github.com/abynim)
 
 
 # Muravjev’s Typograph (alfa)
