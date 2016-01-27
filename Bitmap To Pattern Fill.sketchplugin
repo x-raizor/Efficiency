@@ -1,12 +1,14 @@
 // Bitmap To Pattern Fill (ctrl shift y)
 
-function versionToNumber(versionString) {
-	var number = 0;
-	versionString.split(".").forEach( function(value, id) {
-		number += value / Math.pow(10, Math.max(id, id + value.length - 1));
-	});
-	return number;
+function getSketchVersionNumber() {
+	const version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
+	var versionNumber = version.stringByReplacingOccurrencesOfString_withString(".", "") + ""
+	while(versionNumber.length != 3) {
+		versionNumber += "0"
+	}
+	return parseInt(versionNumber)
 }
+var sketchVersion = getSketchVersionNumber()
 
 
 function run() {
@@ -18,14 +20,13 @@ function run() {
 	var loop = [selection objectEnumerator],
 		notBitmapCount = 0,
 		newLayers = [NSMutableArray new],
-		sketchVersion = versionToNumber( [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"] ),
 		rawImage, parent, newLayer, rect;
 		
 	while (layer = [loop nextObject]) {
 		if ([layer class] === MSBitmapLayer) {
-			rawImage = (sketchVersion >= 3.4) ? [layer NSImage] : [[layer image] image]
+			rawImage = (sketchVersion >= 340) ? [layer NSImage] : [[layer image] image]
 			parent = [layer parentGroup]
-			newLayer = (sketchVersion >= 3.3) ? [parent addLayerOfType: 'rectangle'] : [[parent addLayerOfType: 'rectangle'] embedInShapeGroup]
+			newLayer = (sketchVersion >= 330) ? [parent addLayerOfType: 'rectangle'] : [[parent addLayerOfType: 'rectangle'] embedInShapeGroup]
 			[newLayer setName:[layer name]]
 			
 			rect = [layer absoluteRect]
@@ -73,10 +74,14 @@ function setBitmapFill(layer, imageData) {
 			}
 			[fills addNewStylePart];
 			
-		var bmpFill = [fills lastObject],
-			fillCollection = [[bmpFill documentData] images]
+		var bmpFill = [fills lastObject]
+			
 			[bmpFill setFillType:4]
-			[bmpFill setPatternImage:imageData collection:fillCollection]
+			if(sketchVersion < 350) {
+				[bmpFill setPatternImage:imageData collection:[[bmpFill documentData] images]]
+			} else {
+				[bmpFill setPatternImage:imageData]
+			}
 			[bmpFill setPatternFillType:1]
 	}
 }
