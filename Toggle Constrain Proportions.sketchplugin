@@ -1,4 +1,4 @@
-// Toggle 'Constrain proportions' property (cmd shift a)
+// Toggle 'Constrain proportions' property (cmd shift k)
 
 var loop = [selection objectEnumerator]
 

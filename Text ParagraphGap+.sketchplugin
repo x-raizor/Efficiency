@@ -8,6 +8,7 @@ for (var i = 0; i < itemsNumber; i++) {
     var layer = newSelection[i];
     var lead = layer.leading();
     layer.setLeading(lead + 1);
-    layer.adjustFrameToFit();
+    //layer.adjustFrameToFit();
 }
+
 [doc reloadInspector]

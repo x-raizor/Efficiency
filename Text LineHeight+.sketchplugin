@@ -6,9 +6,14 @@ var itemsNumber = newSelection.length;
 
 for (var i = 0; i < itemsNumber; i++) {
     var layer = newSelection[i];
-  	var ls = layer.lineSpacing();
-    layer.lineSpacing =  ls + 1;
-    layer.adjustFrameToFit();
+    
+    var lineHeight = [layer lineHeight];
+    setLineHeightForLayer(layer, lineHeight + 1, context)
+  	
+  	//var ls = layer.lineSpacing(); // version < 3.5
+    //layer.lineSpacing =  ls + 1;
+    
+    //layer.adjustFrameToFit();
 }
 
 [doc reloadInspector]

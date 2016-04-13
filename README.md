@@ -10,7 +10,7 @@ Here is a plugins suite for efficient work in Sketch.App. The purpose is to work
 ![Bitmap to pattern fill](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/bitmap-to-fill.gif)
 Convert selected images into rectangles with images as pattern fill.
 
-Plugin by [Aby Nimbalkar](https://github.com/abynim)
+Plugin by Aby Nimbalkar
 
 
 # Muravjev’s Typograph (alfa)
@@ -33,10 +33,10 @@ Typographics enhancer with set of rules for Russian typographics. Powered by [md
 Let you manipulate with text block leading (paragraph indent), line spacing and tracking via keyboard. With native hotkeys for font size (cmd alt =/-) and text block size changing (cmd shift ←/→) it transforms Sketch into typographics tool with immediate connection.
 
 ## Keyboard shortcuts
-* Line Spacing+: Cmd Alt Shift =
-* Line Spacing-: Cmd Alt Shift -
-* Leading+: Cmd Alt Shift Ctrl =
-* Leading-: Cmd Alt Shift Ctrl -
+* Line Height +: Cmd Alt Shift =
+* Line Height -: Cmd Alt Shift -
+* Paragraph Gap +: Cmd Alt Shift Ctrl =
+* Paragraph Gap -: Cmd Alt Shift Ctrl -
 * Tracking-: Alt ← 
 * Tracking+: Alt →
 
@@ -67,7 +67,7 @@ Gives to layers in selection random size based on Perlin noise. It’ll ask you 
 # Toggle ‘Constrain Proportions’
 Toggle state of ‘Constrain Proportions’ layer property. 
 
-**Shortcut**: Cmd Shift A (mnemonically: Aspect ratio)
+**Shortcut**: Cmd Shift K (mnemonically: Keep aspect ratio)
 
 ![Toggle Constrain Proportions](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/toggle-constrain-proportions.gif)
 
