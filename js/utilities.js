@@ -46,6 +46,28 @@ function simulateKeyStroke(keyCode,modFlags) {
  * Helpers 
  */
 
+
+function setLineHeightForLayer(textLayer, lineHeight, context) {
+  if ( [textLayer className] != "MSTextLayer" ) { return; }
+  if( lineHeight <= 0 ) {
+    lineHeight = [textLayer defaultLineHeight];
+  }
+
+  var attrsM = [[[[textLayer style] textStyle] attributes] mutableCopy],
+  paraStyle = attrsM.NSParagraphStyle || [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+
+  [paraStyle setMaximumLineHeight:lineHeight];
+  [paraStyle setMinimumLineHeight:lineHeight];
+
+  attrsM.NSParagraphStyle = paraStyle;
+  [[[textLayer style] textStyle] setAttributes:attrsM];
+
+  if (context && context.document) {
+    context.document.reloadInspector();
+  }
+}
+
+
 function selectLayer(layer) {
     [layer select:true byExpandingSelection:true]
 }
@@ -213,6 +235,7 @@ var clipboard = {
         return text.toString();
     }
 };
+
 
 
 /* 
