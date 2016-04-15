@@ -22,6 +22,8 @@
         [copy select:true byExpandingSelection:true]
       }
     }
-
   }
+
+  [doc reloadInspector]
+  
 }())
