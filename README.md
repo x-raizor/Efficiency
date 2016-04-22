@@ -13,12 +13,23 @@ Convert selected images into rectangles with images as pattern fill.
 Plugin by Aby Nimbalkar
 
 
-# Muravjev’s Typograph (alfa)
+# Soft-hyphens (Cyrillic only for the moment)
+![Bitmap to pattern fill](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/hyphen.gif)
+
+Provides selected text with soft-hyphens in order to obtain soft right edge of left align.
+
+[Algorithm](http://quittance.ru/hyphenator.php) by [Sergey Kurakin](http://quittance.ru/blog/index.php?category=7)
+Web service by [Edele Gizatullin](https://github.com/edele)
+
+**Shortcut:** Cmd Ctrl Shift T
+
+
+# Muravjev’s Typograph (Cyrillic only for the moment)
 ![Bitmap to pattern fill](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/typograph.gif)
 
 Typographics enhancer with set of rules for Russian typographics. Powered by [mdash.ru](http://mdash.ru) typograph web service which is lovely made by Evgeny Muravjev and Alexander Drutsa.
 
-**Set options**
+**Default options set**
 * OptAlign.all = off
 * Text.breakline = off
 * Text.paragraphs = off
@@ -72,12 +83,13 @@ Toggle state of ‘Constrain Proportions’ layer property.
 ![Toggle Constrain Proportions](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/toggle-constrain-proportions.gif)
 
 
-
-# Authors
+# Credits
+## Plugin authors
 * Aby Nimbalkar
 * Andrew Shapiro
 
-
-# Credits
+## Third parties
 * Perlin Noise by John Haggerty [Slime](http://www.slimeland.com)
 * [Mdash.ru](http://mdash.ru) typograph web service by Evgeny Muravjev and Alexander Drutsa
+*  Hyphenation using Liang-Knuth algorithm by [Sergey Kurakin](http://quittance.ru/blog/index.php?category=7)
+* Web service for hyphenation by [Edele Gizatullin](https://github.com/edele)

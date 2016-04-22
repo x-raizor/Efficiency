@@ -179,7 +179,7 @@ function get(url) {
  *  Sychronous request with GET of POST method
  *  with contribution of @tylergaw on github
  */
-function getJSON (url, method, body) {
+function getURL (url, method, body) {
 
   if (method == undefined || method == 'GET' || body == undefined) {
     // GET request
@@ -193,10 +193,27 @@ function getJSON (url, method, body) {
     [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];    
   }
 
-  var response = NSURLConnection.sendSynchronousRequest_returningResponse_error(request, null, null);
-  return JSON.parse(NSString.alloc().initWithData_encoding(response, NSUTF8StringEncoding));
+  return NSURLConnection.sendSynchronousRequest_returningResponse_error(request, null, null);
 }
 
+/**
+ *  Sychronous request with GET of POST method
+ *  parses and returns JSON 
+ */
+function getJSON (url, method, body) {
+    var response = getURL (url, method, body);
+    return JSON.parse(NSString.alloc().initWithData_encoding(response, NSUTF8StringEncoding));
+}
+
+/**
+ *  Sychronous request with GET of POST method
+ *  returns string
+ */
+
+function getURLString (url, method, body) {
+    var responseData = getURL (url, method, body);
+    return [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding].toString();
+}
 
 
 
