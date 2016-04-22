@@ -20,8 +20,6 @@ while (layer = [loop nextObject]) {
         body = "text=" + encodeURIComponent([layer stringValue]),
         result = getURLString(url, 'POST', body);
 
-    //var result = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding]
-
     [layer setStringValue: result ] // inject typographed text
 
     // rerender text layer

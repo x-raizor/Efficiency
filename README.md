@@ -15,7 +15,6 @@ Plugin by Aby Nimbalkar
 
 # Soft-hyphens (Cyrillic only for the moment)
 ![Bitmap to pattern fill](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/hyphen.gif)
-
 Provides selected text with soft-hyphens in order to obtain soft right edge of left align.
 
 [Algorithm](http://quittance.ru/hyphenator.php) by [Sergey Kurakin](http://quittance.ru/blog/index.php?category=7)

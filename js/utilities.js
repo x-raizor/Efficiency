@@ -47,6 +47,14 @@ function simulateKeyStroke(keyCode,modFlags) {
  */
 
 
+function getLineHeightForLayer(textLayer) {
+  var lineHeight = [textLayer lineHeight]
+  if( lineHeight <= 0 ) {
+    lineHeight = [textLayer defaultLineHeight];
+  }
+  return lineHeight;
+} 
+
 function setLineHeightForLayer(textLayer, lineHeight, context) {
   if ( [textLayer className] != "MSTextLayer" ) { return; }
   if( lineHeight <= 0 ) {
