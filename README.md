@@ -1,9 +1,7 @@
-
+![](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/efficiency-logo.png)
 Efficiency
 ==========
 Here is a plugins suite for efficient work in Sketch.App. The purpose is to work faster and less apish.
-
-![](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/efficiency-logo.png)
 
 
 # Bitmap To Pattern Fill
@@ -15,12 +13,14 @@ Plugin by Aby Nimbalkar
 
 # Soft-hyphens (Cyrillic only for the moment)
 ![Bitmap to pattern fill](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/hyphen.gif)
+
 Provides selected text with soft-hyphens in order to obtain soft right edge of left align.
+
+**Shortcut:** Cmd Ctrl Shift T
 
 [Algorithm](http://quittance.ru/hyphenator.php) by [Sergey Kurakin](http://quittance.ru/blog/index.php?category=7)
 Web service by [Edele Gizatullin](https://github.com/edele)
 
-**Shortcut:** Cmd Ctrl Shift T
 
 
 # Muravjev’s Typograph (Cyrillic only for the moment)
