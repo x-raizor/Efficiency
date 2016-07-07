@@ -10,8 +10,8 @@ function getSketchVersionNumber() {
 }
 var sketchVersion = getSketchVersionNumber()
 
-
 function run() {
+
 	if ([selection count] == 0) {
 		showDialog("Select an image layer")
 		return
@@ -26,7 +26,17 @@ function run() {
 		if ([layer class] === MSBitmapLayer) {
 			rawImage = (sketchVersion >= 340) ? [layer NSImage] : [[layer image] image]
 			parent = [layer parentGroup]
-			newLayer = (sketchVersion >= 330) ? [parent addLayerOfType: 'rectangle'] : [[parent addLayerOfType: 'rectangle'] embedInShapeGroup]
+			var newLayer;
+			if (sketchVersion >= 380) {
+				//newLayer = parent.addLayers_([MSRect.alloc()]);
+				// TODO: versions debt
+				newLayer = [parent addLayerOfType: 'rectangle']
+			} else if (sketchVersion >= 330) {
+				newLayer = [parent addLayerOfType: 'rectangle']
+			} else {
+				newLayer = [[parent addLayerOfType: 'rectangle'] embedInShapeGroup]	
+			}
+			// newLayer = (sketchVersion >= 330) ? [parent addLayerOfType: 'rectangle'] : [[parent addLayerOfType: 'rectangle'] embedInShapeGroup]
 			[newLayer setName:[layer name]]
 			
 			rect = [layer absoluteRect]
@@ -65,6 +75,7 @@ function showDialog (message, OKHandler) {
 }
 
 function setBitmapFill(layer, imageData) {
+
 	if( [layer class] === MSShapeGroup ) {
 		var fills = [[layer style] fills];
 			// disable existing fills
@@ -72,12 +83,20 @@ function setBitmapFill(layer, imageData) {
 			while (existingFill = [loop nextObject]) {
 				[existingFill setIsEnabled:false]
 			}
-			[fills addNewStylePart];
+
+			if (sketchVersion >= 380) {
+				layer.style().addStylePartOfType(0);
+			} else {
+				[fills addNewStylePart];
+			}
 			
 		var bmpFill = [fills lastObject]
-			
 			[bmpFill setFillType:4]
-			if(sketchVersion < 350) {
+			if(sketchVersion >= 380) {
+				// TODO: versions debt
+				//[bmpFill [MSImageData NSImage: imageData]]
+				[bmpFill setPatternImage:imageData]
+			} else if(sketchVersion < 350) {
 				[bmpFill setPatternImage:imageData collection:[[bmpFill documentData] images]]
 			} else {
 				[bmpFill setPatternImage:imageData]
