@@ -20,31 +20,39 @@ function run() {
 	var loop = [selection objectEnumerator],
 		notBitmapCount = 0,
 		newLayers = [NSMutableArray new],
-		rawImage, parent, newLayer, rect;
+		rawImage, parent, newLayer, rect, newLayer;
 		
 	while (layer = [loop nextObject]) {
 		if ([layer class] === MSBitmapLayer) {
 			rawImage = (sketchVersion >= 340) ? [layer NSImage] : [[layer image] image]
 			parent = [layer parentGroup]
-			var newLayer;
-			if (sketchVersion >= 380) {
-				//newLayer = parent.addLayers_([MSRect.alloc()]);
-				// TODO: versions debt
-				newLayer = [parent addLayerOfType: 'rectangle']
-			} else if (sketchVersion >= 330) {
-				newLayer = [parent addLayerOfType: 'rectangle']
-			} else {
-				newLayer = [[parent addLayerOfType: 'rectangle'] embedInShapeGroup]	
-			}
-			// newLayer = (sketchVersion >= 330) ? [parent addLayerOfType: 'rectangle'] : [[parent addLayerOfType: 'rectangle'] embedInShapeGroup]
-			[newLayer setName:[layer name]]
-			
 			rect = [layer absoluteRect]
+
+			if (sketchVersion >= 390) {
+				var path = NSBezierPath.bezierPathWithRect(layer.absoluteRect().rect());
+				newLayer = MSShapeGroup.shapeWithBezierPath(path);
+				parent.addLayers([newLayer]);
+			} else {
+				if (sketchVersion >= 380) {
+					//newLayer = parent.addLayers_([MSRect.alloc()]);
+					// TODO: versions debt
+					newLayer = [parent addLayerOfType: 'rectangle']
+				} else if (sketchVersion >= 330) {
+					newLayer = [parent addLayerOfType: 'rectangle']
+				} else {
+					newLayer = [[parent addLayerOfType: 'rectangle'] embedInShapeGroup]	
+				}
+
+				// newLayer = (sketchVersion >= 330) ? [parent addLayerOfType: 'rectangle'] : [[parent addLayerOfType: 'rectangle'] embedInShapeGroup]
+				
+				[[newLayer absoluteRect] setWidth: [rect width]];
+			    [[newLayer absoluteRect] setHeight: [rect height]];
+			}
+			
 			[[newLayer absoluteRect] setX: [rect x]];
 		    [[newLayer absoluteRect] setY: [rect y]];
-			[[newLayer absoluteRect] setWidth: [rect width]];
-		    [[newLayer absoluteRect] setHeight: [rect height]];
-			
+			[newLayer setName:[layer name]];
+
 			setBitmapFill(newLayer, rawImage)
 			[parent removeLayer: layer]
 			[newLayers addObject:newLayer]
@@ -79,7 +87,7 @@ function setBitmapFill(layer, imageData) {
 	if( [layer class] === MSShapeGroup ) {
 		var fills = [[layer style] fills];
 			// disable existing fills
-			var loop = [[fills array] objectEnumerator]
+			var loop = sketchVersion >= 390 ? fills.objectEnumerator() : fills.array().objectEnumerator();
 			while (existingFill = [loop nextObject]) {
 				[existingFill setIsEnabled:false]
 			}
@@ -90,9 +98,11 @@ function setBitmapFill(layer, imageData) {
 				[fills addNewStylePart];
 			}
 			
-		var bmpFill = [fills lastObject]
+		var bmpFill = sketchVersion >= 390 ? layer.style().fills().lastObject() : [fills lastObject];
 			[bmpFill setFillType:4]
-			if(sketchVersion >= 380) {
+			if(sketchVersion >= 390) {
+				bmpFill.setImage(MSImageData.alloc().initWithImage_convertColorSpace(imageData, false));
+			} else if(sketchVersion >= 380) {
 				// TODO: versions debt
 				//[bmpFill [MSImageData NSImage: imageData]]
 				[bmpFill setPatternImage:imageData]
