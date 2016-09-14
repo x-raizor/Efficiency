@@ -10,7 +10,10 @@ function getSketchVersionNumber() {
 }
 var sketchVersion = getSketchVersionNumber()
 
-function run() {
+var onRun = function(context) {
+
+	var selection = context.selection;
+	var doc = context.document;
 
 	if ([selection count] == 0) {
 		showDialog("Select an image layer")
@@ -72,7 +75,10 @@ function run() {
 	} else if (notBitmapCount > 1) {
 		showDialog(notBitmapCount+" selected layers are not image layers")
 	}
+
+	[doc reloadInspector]
 }
+
 
 function showDialog (message, OKHandler) {
   var alert = [COSAlertWindow new];
@@ -113,6 +119,5 @@ function setBitmapFill(layer, imageData) {
 			}
 			[bmpFill setPatternFillType:1]
 	}
-}
 
-run()
+}

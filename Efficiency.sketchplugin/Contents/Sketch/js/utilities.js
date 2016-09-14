@@ -111,10 +111,11 @@ function selectChildren(layers) {
 /**
  * Return array of selected layers keeping only text ones
  */
-function getTextLayers() {
+function getTextLayers(context) {
     var newSelection = []
     
     // look through selection to lookup inside groups and gather layers
+    var selection = context.selection;
     var loop = [selection objectEnumerator]
     while (layer = [loop nextObject]) {
       if (isGroup(layer)) {

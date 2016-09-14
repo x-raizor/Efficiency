@@ -45,8 +45,8 @@ Let you manipulate with text block leading (paragraph indent), line spacing and 
 ## Keyboard shortcuts
 * Line Height +: Cmd Alt Shift =
 * Line Height -: Cmd Alt Shift -
-* Paragraph Gap +: Cmd Alt Ctrl =
-* Paragraph Gap -: Cmd Alt Ctrl -
+* Paragraph Gap +: Cmd Alt Shift Ctrl =
+* Paragraph Gap -: Cmd Alt Shift Ctrl -
 * Tracking-: Alt ← 
 * Tracking+: Alt →
 

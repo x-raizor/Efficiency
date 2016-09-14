@@ -1,0 +1,110 @@
+{
+  "name" : "Efficiency",
+  "description" : "Sketch app plugins for efficient text manipulation and add ranodmness to items size and positions",
+  "author" : "Andrew Shapiro, Aby Nimbalkar",
+  "authorEmail" : "andrew@ashapiro.ru",
+  "homepage": "https://github.com/x-raizor/Efficiency",
+  "identifier" : "com.example.sketch.5c62e078-3c28-4a0c-9b26-6b3cf5fbd164",
+  "version" : "1.0",
+  "compatibleVersion": 3,
+
+  "commands": [
+    {
+      "name": "Bitmap To Pattern Fill",
+      "identifier": "bitmapToPatternFill",
+      "shortcut": "ctrl shift y",
+      "script": "Bitmap To Pattern Fill.js"
+    },
+    {
+      "name": "Keep only text layers in selection",
+      "identifier": "onlyText",
+      "shortcut": "",
+      "script": "Keep only text layers in selection.js"
+    },
+    {
+      "name": "Random shift",
+      "identifier": "randomShift",
+      "shortcut": "cmd alt r",
+      "script": "Random shift.js"
+    },
+    {
+      "name": "Random size",
+      "identifier": "randomSize",
+      "shortcut": "ctrl shift y",
+      "script": "Random size.js"
+    },
+    {
+      "name": "Text Hyphenate",
+      "identifier": "hyphenate",
+      "shortcut": "cmd ctrl alt h",
+      "script": "Text Hyphenate.js"
+    },
+    {
+      "name": "Text LineHeight+",
+      "identifier": "lineHeightUp",
+      "shortcut": "cmd alt shift =",
+      "script": "Text LineHeight+.js"
+    },
+    {
+      "name": "Text LineHeight−",
+      "identifier": "lineHeightDown",
+      "shortcut": "cmd alt shift -",
+      "script": "Text LineHeight−.js"
+    },
+    {
+      "name": "Text ParagraphGap+",
+      "identifier": "paragraphUp",
+      "shortcut": "cmd alt ctrl =",
+      "script": "Text ParagraphGap+.js"
+    },
+    {
+      "name": "Text ParagraphGap−",
+      "identifier": "paragraphDown",
+      "shortcut": "cmd alt ctrl -",
+      "script": "Text ParagraphGap−.js"
+    },
+    {
+      "name": "Text Tracking -",
+      "identifier": "trackingUp",
+      "shortcut": "alt ←",
+      "script": "Text Tracking -.js"
+
+    },
+    {
+      "name": "Text Tracking +",
+      "identifier": "trackingDown",
+      "shortcut": "alt →",
+      "script": "Text Tracking +.js"
+    },
+    {
+      "name": "Text Typograph",
+      "identifier": "typograph",
+      "shortcut": "cmd ctrl shift t",
+      "script": "Text Typograph.js"
+    },
+    {
+      "name": "Toggle Constrain Proportions",
+      "identifier": "proportionToggle",
+      "shortcut": "cmd shift k",
+      "script": "Toggle Constrain Proportions.js"
+    }
+  ],
+  "menu": {
+    "items": [
+      "bitmapToPatternFill",
+      "onlyText",
+      "lineHeightUp",
+      "lineHeightDown",
+      "paragraphUp",
+      "paragraphDown",
+      "trackingUp",
+      "trackingDown",
+      "typograph",
+      "hyphenate",
+      "randomShift",
+      "randomSize",
+      "proportionToggle"
+    ]
+  }
+  
+}

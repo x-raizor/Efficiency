@@ -1,7 +1,11 @@
 //  Increase Tracking for text layer or Duplicate and Nudge Right (alt →)
 @import 'js/utilities.js'
 
-(function() {
+var onRun = function(context) {
+
+  var doc = context.document;
+  var selection = context.selection;
+
   for(var i=0; i < [selection count]; i++){
     if (isText(selection[i])) { // tracking part
       var layer = selection[i];
@@ -26,4 +30,4 @@
 
   [doc reloadInspector]
   
-}())
+}
