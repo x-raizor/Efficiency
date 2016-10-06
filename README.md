@@ -1,8 +1,9 @@
 ![](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/efficiency-logo.png)
 Efficiency
 ==========
-Here is a plugins suite for efficient work in Sketch.App. The purpose is to work faster and less apish.
+Sketch App plugins suite for faster and less apish work. Download and start Efficiency.sketchplugin to install.
 
+*Tested in Sketch Version 39.1 (31720)*
 
 # Bitmap To Pattern Fill
 ![Bitmap to pattern fill](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/bitmap-to-fill.gif)
