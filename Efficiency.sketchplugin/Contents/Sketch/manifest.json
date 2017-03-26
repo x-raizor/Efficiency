@@ -30,7 +30,7 @@
     {
       "name": "Random size",
       "identifier": "randomSize",
-      "shortcut": "ctrl shift y",
+      "shortcut": "cmd alt shift r",
       "script": "Random size.js"
     },
     {
