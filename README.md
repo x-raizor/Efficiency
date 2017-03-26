@@ -3,7 +3,12 @@ Efficiency
 ==========
 Sketch App plugins suite for faster and less apish work. Download and start Efficiency.sketchplugin to install.
 
-*Tested in Sketch Version 39.1 (31720)*
+*Tested in Sketch Version 42 (36781)*
+
+# Swap Fill & Border (new)
+Analogue of pressing 'X' in Adobe Illustrtor. The amazing plugin was ![written](https://github.com/nathco/Swap-Fill-Border) by ![Nathan Rutzky](https://github.com/nathco) and when adopted to the latest versions of Sketch.
+
+**Shortcut:** Cmd Shift X
 
 # Bitmap To Pattern Fill
 ![Bitmap to pattern fill](https://raw.githubusercontent.com/x-raizor/Efficiency/master/demo/bitmap-to-fill.gif)
@@ -87,6 +92,7 @@ Toggle state of ‘Constrain Proportions’ layer property.
 ## Plugin authors
 * Aby Nimbalkar
 * Andrew Shapiro
+* Nathan Rutzky
 
 ## Third parties
 * Perlin Noise by John Haggerty [Slime](http://www.slimeland.com)

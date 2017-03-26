@@ -61,11 +61,15 @@ function setLineHeightForLayer(textLayer, lineHeight, context) {
     lineHeight = [textLayer defaultLineHeight];
   }
 
+// NSParagraphStyle =                     {
+// -  "<class>" = NSMutableParagraphStyle;
+// +  "<class>" = NSParagraphStyle;
+
   var attrsM = [[[[textLayer style] textStyle] attributes] mutableCopy],
   paraStyle = attrsM.NSParagraphStyle || [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
-
-  [paraStyle setMaximumLineHeight:lineHeight];
-  [paraStyle setMinimumLineHeight:lineHeight];
+  
+  [paraStyle setMaximumLineHeight: lineHeight];
+  [paraStyle setMinimumLineHeight: lineHeight];
 
   attrsM.NSParagraphStyle = paraStyle;
   [[[textLayer style] textStyle] setAttributes:attrsM];

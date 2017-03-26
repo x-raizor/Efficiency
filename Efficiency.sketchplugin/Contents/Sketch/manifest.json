@@ -87,7 +87,14 @@
       "identifier": "proportionToggle",
       "shortcut": "cmd shift k",
       "script": "Toggle Constrain Proportions.js"
+    },
+    {
+      "name": "Swap Fill and Border",
+      "identifier": "swapFillBorder",
+      "shortcut": "cmd shift x",
+      "script": "Swap Fill & Border.js"
     }
+    
   ],
   "menu": {
     "items": [
@@ -103,7 +110,8 @@
       "hyphenate",
       "randomShift",
       "randomSize",
-      "proportionToggle"
+      "proportionToggle",
+      "swapFillBorder"
     ]
   }
   

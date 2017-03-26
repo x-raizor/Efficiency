@@ -1,4 +1,4 @@
-// Leading Up
+// Lineheight Increase
 @import 'js/utilities.js'
 
 var onRun = function(context) {
@@ -12,13 +12,7 @@ var onRun = function(context) {
 	    
 	    var lineHeight = getLineHeightForLayer(layer);
 	    setLineHeightForLayer(layer, lineHeight + 1, context)
-	  	
-	  	//var ls = layer.lineSpacing(); // version < 3.5
-	    //layer.lineSpacing =  ls + 1;
-	    
-	    //layer.adjustFrameToFit();
 	}
-
+	
 	[doc reloadInspector]
-
 }
