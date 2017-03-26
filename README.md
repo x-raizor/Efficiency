@@ -5,8 +5,8 @@ Sketch App plugins suite for faster and less apish work. Download and start Effi
 
 *Tested in Sketch Version 42 (36781)*
 
-# Swap Fill & Border (new)
-Analogue of pressing 'X' in Adobe Illustrtor. The amazing plugin was [written](https://github.com/nathco/Swap-Fill-Border) by [Nathan Rutzky](https://github.com/nathco) and when adopted to the latest versions of Sketch.
+# Swap Fill & Border colors (new)
+An analogue of pressing 'X' in Adobe Illustrator which is interchange colors between fill and border. The amazing plugin was [written](https://github.com/nathco/Swap-Fill-Border) by [Nathan Rutzky](https://github.com/nathco) and when adopted to the latest versions of Sketch.
 
 **Shortcut:** Cmd Shift X
 
