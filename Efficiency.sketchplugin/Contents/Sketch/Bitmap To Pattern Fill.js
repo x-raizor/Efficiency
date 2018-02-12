@@ -12,6 +12,8 @@ var sketchVersion = getSketchVersionNumber()
 
 var onRun = function(context) {
 
+	console.log(getSketchVersionNumber());
+
 	var selection = context.selection;
 	var doc = context.document;
 
@@ -45,8 +47,6 @@ var onRun = function(context) {
 				} else {
 					newLayer = [[parent addLayerOfType: 'rectangle'] embedInShapeGroup]	
 				}
-
-				// newLayer = (sketchVersion >= 330) ? [parent addLayerOfType: 'rectangle'] : [[parent addLayerOfType: 'rectangle'] embedInShapeGroup]
 				
 				[[newLayer absoluteRect] setWidth: [rect width]];
 			    [[newLayer absoluteRect] setHeight: [rect height]];
@@ -64,7 +64,12 @@ var onRun = function(context) {
 		}
 	}
 	
-	[[doc currentPage] deselectAllLayers]
+	if (sketchVersion >= 480) {
+		//[[doc selectedPage] deselectAllLayers]	
+	} else {
+		[[doc currentPage] deselectAllLayers]	
+	}
+	
 	loop = [newLayers objectEnumerator]
 	while (layer = [loop nextObject]) {
 		[layer select:true byExpandingSelection:true]
@@ -106,15 +111,22 @@ function setBitmapFill(layer, imageData) {
 			
 		var bmpFill = sketchVersion >= 390 ? layer.style().fills().lastObject() : [fills lastObject];
 			[bmpFill setFillType:4]
-			if(sketchVersion >= 390) {
+			if (sketchVersion >= 480) {
+				bmpFill.setImage(MSImageData.alloc().initWithImage(imageData));
+			} 
+			else if (sketchVersion >= 390) {
 				bmpFill.setImage(MSImageData.alloc().initWithImage_convertColorSpace(imageData, false));
-			} else if(sketchVersion >= 380) {
+			} 
+			else if (sketchVersion >= 380) 
+			{
 				// TODO: versions debt
 				//[bmpFill [MSImageData NSImage: imageData]]
 				[bmpFill setPatternImage:imageData]
-			} else if(sketchVersion < 350) {
+			} else if (sketchVersion < 350) 
+			{
 				[bmpFill setPatternImage:imageData collection:[[bmpFill documentData] images]]
-			} else {
+			} else 
+			{
 				[bmpFill setPatternImage:imageData]
 			}
 			[bmpFill setPatternFillType:1]
